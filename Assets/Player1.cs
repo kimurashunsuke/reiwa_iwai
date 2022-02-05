@@ -7,9 +7,11 @@ public class Player1 : MonoBehaviour
 {
     private Rigidbody2D myRigidbody;
     private float speed;
-    // Start is called before the first frame update
+    private AudioClip audioClip;
     void Start()
     {
+        audioClip = gameObject.GetComponent<AudioSource> ().clip;
+
         myRigidbody = this.gameObject.GetComponent<Rigidbody2D>();        
         speed = 10f;
     }
@@ -19,7 +21,7 @@ public class Player1 : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-            speed += 10f;
+            speed += 6f;
             Vector2 force = new Vector2(speed, 0f);
             myRigidbody.AddForce(force);
         }
@@ -28,6 +30,9 @@ public class Player1 : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.name == "GameEndGround") {
             SceneManager.LoadScene("Title");
+        }
+        if (other.gameObject.name == "Enemy") {
+            GetComponent<AudioSource>().PlayOneShot(audioClip);
         }
     }
 }

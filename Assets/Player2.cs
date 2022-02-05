@@ -11,7 +11,7 @@ public class Player2 : MonoBehaviour
     void Start()
     {
         myRigidbody = this.gameObject.GetComponent<Rigidbody2D>();        
-        speed = 0f;
+        speed = -0.04f;
     }
 
     // Update is called once per frame
