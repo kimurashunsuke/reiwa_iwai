@@ -26,7 +26,7 @@ public class Player1 : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.name == "LeftWall") {
+        if (other.gameObject.name == "GameEndGround") {
             SceneManager.LoadScene("Title");
         }
     }

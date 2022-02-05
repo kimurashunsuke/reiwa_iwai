@@ -22,7 +22,7 @@ public class Player2 : MonoBehaviour
         myRigidbody.AddForce(force);
     }
     private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.name == "RightWall") {
+        if (other.gameObject.name == "GameEndGround") {
             SceneManager.LoadScene("Title");
         }
     }
