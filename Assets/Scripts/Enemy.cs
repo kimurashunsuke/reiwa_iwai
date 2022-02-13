@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speed -= 0.001f;
+        speed -= Random.value / 100;
         Vector2 force = new Vector2(speed, 0f);
         myRigidbody.AddForce(force);
 
@@ -29,6 +29,8 @@ public class Enemy : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.name == "GameEndGround") {
+            GameScore.wins ++;
+            GameScore.score += 10000;
             SceneManager.LoadScene("Win");
         }
         if (other.gameObject.name == "Player") {
