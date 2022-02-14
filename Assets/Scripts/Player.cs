@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D myRigidbody;
     private float speed;
     private AudioClip audioClip;
-//   private const string EFFECT_PATH = "Prefabs/Colision";
+    private const string EFFECT_PATH = "Prefabs/Collision";
     void Start()
     {
         audioClip = gameObject.GetComponent<AudioSource> ().clip;
@@ -41,12 +41,12 @@ public class Player : MonoBehaviour
         if (other.gameObject.name == "Enemy") {
             speed = 0;
             GameScore.score += 100;
-/*
+
             foreach (ContactPoint2D point in other.contacts) {
-                GameObject effect = Instantiate (Resources.Load (EFFECT_PATH)) as GameObject;
-                effect.transform.position = (Vector3)point.point;
+                GameObject effect = Instantiate(Resources.Load (EFFECT_PATH)) as GameObject;
+                effect.transform.position = new Vector2(point.point.x, Random.Range(-1, 3));
             }
-*/
+
             GetComponent<AudioSource>().PlayOneShot(audioClip);
         }
     }
